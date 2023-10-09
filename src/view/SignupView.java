@@ -53,13 +53,10 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                 new ActionListener() {
                     public void actionPerformed(ActionEvent evt) {
                         if (evt.getSource().equals(signUp)) {
-                            signupController.execute(usernameInputField.getText(),
-                                    String.valueOf(passwordInputField.getPassword()),
-                                    String.valueOf(repeatPasswordInputField.getPassword()));
-                            // huh??
-                            System.out.println(signupViewModel.getState().getUsername());
-                            System.out.println(signupViewModel.getState().getPassword());
-                            System.out.println(signupViewModel.getState().getRepeatPassword());
+                            // huh?? Not sure what it wants
+                            signupController.execute(signupViewModel.getState().getUsername(),
+                                    signupViewModel.getState().getPassword(),
+                                    signupViewModel.getState().getRepeatPassword());
                         }
                     }
                 }
@@ -92,7 +89,7 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                     @Override
                     public void keyTyped(KeyEvent e) {
                         SignupState currentState = signupViewModel.getState();
-                        currentState.setPassword(Arrays.toString(passwordInputField.getPassword()) + e.getKeyChar());
+                        currentState.setPassword(passwordInputField.getText() + e.getKeyChar());
                         signupViewModel.setState(currentState);
                     }
 
@@ -109,7 +106,7 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                     @Override
                     public void keyTyped(KeyEvent e) {
                         SignupState currentState = signupViewModel.getState();
-                        currentState.setRepeatPassword(Arrays.toString(repeatPasswordInputField.getPassword()) + e.getKeyChar());
+                        currentState.setRepeatPassword(repeatPasswordInputField.getText() + e.getKeyChar());
                         signupViewModel.setState(currentState);
                     }
 
