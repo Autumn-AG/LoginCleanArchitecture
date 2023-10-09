@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.Arrays;
 
 public class SignupView extends JPanel implements ActionListener, PropertyChangeListener {
     public final String viewName = "sign up";
@@ -71,6 +72,23 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                     public void keyTyped(KeyEvent e) {
                         SignupState currentState = signupViewModel.getState();
                         currentState.setUsername(usernameInputField.getText() + e.getKeyChar());
+                        signupViewModel.setState(currentState);
+                    }
+
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                    }
+
+                    @Override
+                    public void keyReleased(KeyEvent e) {
+                    }
+                });
+        passwordInputField.addKeyListener(
+                new KeyListener() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        SignupState currentState = signupViewModel.getState();
+                        currentState.setPassword(Arrays.toString(passwordInputField.getPassword()) + e.getKeyChar());
                         signupViewModel.setState(currentState);
                     }
 
