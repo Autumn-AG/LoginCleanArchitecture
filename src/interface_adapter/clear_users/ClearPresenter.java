@@ -1,6 +1,14 @@
 package interface_adapter.clear_users;
 
-// TODO Complete me
+import use_case.clear_users.ClearOutputBoundary;
 
-public class ClearPresenter {
+import javax.swing.*;
+
+public class ClearPresenter implements ClearOutputBoundary {
+
+    @Override
+    public void prepareView(String Output) {
+        JFrame frame = new JFrame("Clear All User Data");
+        JOptionPane.showMessageDialog(frame, "The following users were removed:");
+    }
 }

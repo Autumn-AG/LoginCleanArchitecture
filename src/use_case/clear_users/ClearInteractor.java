@@ -1,6 +1,10 @@
 package use_case.clear_users;
 
-// TODO Complete me
+import use_case.clear_users.ClearOutputBoundary;
 
-public class ClearInteractor {
+public class ClearInteractor implements ClearInputBoundary{
+    @Override
+    public void execute() {
+
+    }
 }
